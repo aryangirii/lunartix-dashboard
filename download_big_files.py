@@ -15,11 +15,11 @@ def download_file(url, local_path):
 # Make sure 'data/' folder exists
 os.makedirs('data', exist_ok=True)
 
-# S3 URLs
-elevation_url = 'https://lunartix-data.s3.us-east-1.amazonaws.com/rescaled_Elevation.tif'
-slope_url = 'https://lunartix-data.s3.us-east-1.amazonaws.com/cleaned_Slope.tif'
+# ✅ Small S3 URLs
+elevation_url = 'https://lunartix-data.s3.us-east-1.amazonaws.com/rescaled_Elevation_small.tif'
+slope_url = 'https://lunartix-data.s3.us-east-1.amazonaws.com/cleaned_Slope_small.tif'
 
-# Local paths
+# ✅ Local file paths to save (can keep same names your app expects)
 elevation_path = 'data/rescaled_Elevation.tif'
 slope_path = 'data/cleaned_Slope.tif'
 
