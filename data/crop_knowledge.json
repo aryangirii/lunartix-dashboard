@@ -1,0 +1,362 @@
+{
+  "rice": {
+    "elevation": {
+      "ideal": [0, 300],
+      "suitable": [0, 500],
+      "marginal": [500, 800]
+    },
+    "slope": {
+      "ideal": [0, 2],
+      "suitable": [0, 5],
+      "marginal": [5, 10]
+    },
+    "rainfall": {
+      "ideal": [1000, 1500],
+      "suitable": [800, 1200],
+      "marginal": [600, 800]
+    },
+    "notes": "Rice requires flat terrain with good water availability and high rainfall"
+  },
+  "wheat": {
+    "elevation": {
+      "ideal": [200, 800],
+      "suitable": [100, 1000],
+      "marginal": [50, 1200]
+    },
+    "slope": {
+      "ideal": [0, 3],
+      "suitable": [0, 8],
+      "marginal": [8, 15]
+    },
+    "rainfall": {
+      "ideal": [400, 800],
+      "suitable": [300, 1000],
+      "marginal": [250, 1200]
+    },
+    "notes": "Wheat adapts to various conditions but prefers moderate rainfall and well-drained soils"
+  },
+  "sugarcane": {
+    "elevation": {
+      "ideal": [0, 400],
+      "suitable": [0, 600],
+      "marginal": [600, 1000]
+    },
+    "slope": {
+      "ideal": [0, 3],
+      "suitable": [0, 8],
+      "marginal": [8, 12]
+    },
+    "rainfall": {
+      "ideal": [1000, 1500],
+      "suitable": [800, 1200],
+      "marginal": [600, 800]
+    },
+    "notes": "Sugarcane requires warm climate, high rainfall, and well-drained fertile soils"
+  },
+  "cotton": {
+    "elevation": {
+      "ideal": [200, 600],
+      "suitable": [100, 800],
+      "marginal": [50, 1000]
+    },
+    "slope": {
+      "ideal": [0, 3],
+      "suitable": [0, 8],
+      "marginal": [8, 12]
+    },
+    "rainfall": {
+      "ideal": [500, 1000],
+      "suitable": [400, 1200],
+      "marginal": [300, 800]
+    },
+    "notes": "Cotton requires warm climate, moderate rainfall, and black cotton soil"
+  },
+  "maize": {
+    "elevation": {
+      "ideal": [200, 1000],
+      "suitable": [100, 1200],
+      "marginal": [50, 1500]
+    },
+    "slope": {
+      "ideal": [0, 5],
+      "suitable": [0, 10],
+      "marginal": [10, 15]
+    },
+    "rainfall": {
+      "ideal": [600, 1200],
+      "suitable": [500, 1400],
+      "marginal": [400, 800]
+    },
+    "notes": "Maize is adaptable to various conditions and requires moderate rainfall"
+  },
+  "soybean": {
+    "elevation": {
+      "ideal": [200, 800],
+      "suitable": [100, 1000],
+      "marginal": [50, 1200]
+    },
+    "slope": {
+      "ideal": [0, 3],
+      "suitable": [0, 8],
+      "marginal": [8, 15]
+    },
+    "rainfall": {
+      "ideal": [600, 1000],
+      "suitable": [500, 1200],
+      "marginal": [400, 800]
+    },
+    "notes": "Soybean requires well-drained soils and moderate rainfall"
+  },
+  "groundnut": {
+    "elevation": {
+      "ideal": [0, 500],
+      "suitable": [0, 700],
+      "marginal": [700, 1000]
+    },
+    "slope": {
+      "ideal": [0, 3],
+      "suitable": [0, 8],
+      "marginal": [8, 12]
+    },
+    "rainfall": {
+      "ideal": [500, 1000],
+      "suitable": [400, 1200],
+      "marginal": [300, 800]
+    },
+    "notes": "Groundnut requires sandy loam soil and moderate rainfall"
+  },
+  "millet": {
+    "elevation": {
+      "ideal": [200, 1000],
+      "suitable": [100, 1200],
+      "marginal": [50, 1500]
+    },
+    "slope": {
+      "ideal": [0, 5],
+      "suitable": [0, 12],
+      "marginal": [12, 20]
+    },
+    "rainfall": {
+      "ideal": [400, 800],
+      "suitable": [300, 1000],
+      "marginal": [250, 600]
+    },
+    "notes": "Millet is drought-resistant and suitable for arid and semi-arid regions"
+  },
+  "barley": {
+    "elevation": {
+      "ideal": [500, 1200],
+      "suitable": [300, 1500],
+      "marginal": [200, 800]
+    },
+    "slope": {
+      "ideal": [0, 3],
+      "suitable": [0, 8],
+      "marginal": [8, 15]
+    },
+    "rainfall": {
+      "ideal": [300, 600],
+      "suitable": [250, 800],
+      "marginal": [200, 500]
+    },
+    "notes": "Barley is suitable for cooler climates and requires less water than wheat"
+  },
+  "pulses": {
+    "elevation": {
+      "ideal": [200, 800],
+      "suitable": [100, 1000],
+      "marginal": [50, 1200]
+    },
+    "slope": {
+      "ideal": [0, 3],
+      "suitable": [0, 8],
+      "marginal": [8, 15]
+    },
+    "rainfall": {
+      "ideal": [400, 800],
+      "suitable": [300, 1000],
+      "marginal": [250, 600]
+    },
+    "notes": "Pulses are nitrogen-fixing crops suitable for various soil types"
+  },
+  "onion": {
+    "elevation": {
+      "ideal": [200, 800],
+      "suitable": [100, 1000],
+      "marginal": [50, 1200]
+    },
+    "slope": {
+      "ideal": [0, 2],
+      "suitable": [0, 5],
+      "marginal": [5, 10]
+    },
+    "rainfall": {
+      "ideal": [400, 800],
+      "suitable": [300, 1000],
+      "marginal": [250, 600]
+    },
+    "notes": "Onion requires well-drained soil and moderate rainfall with dry period during harvest"
+  },
+  "potato": {
+    "elevation": {
+      "ideal": [600, 1500],
+      "suitable": [400, 1800],
+      "marginal": [200, 1000]
+    },
+    "slope": {
+      "ideal": [0, 3],
+      "suitable": [0, 8],
+      "marginal": [8, 12]
+    },
+    "rainfall": {
+      "ideal": [400, 800],
+      "suitable": [300, 1000],
+      "marginal": [250, 600]
+    },
+    "notes": "Potato prefers cool climate and well-drained sandy loam soil"
+  },
+  "tomato": {
+    "elevation": {
+      "ideal": [400, 1000],
+      "suitable": [200, 1200],
+      "marginal": [100, 800]
+    },
+    "slope": {
+      "ideal": [0, 3],
+      "suitable": [0, 8],
+      "marginal": [8, 12]
+    },
+    "rainfall": {
+      "ideal": [400, 800],
+      "suitable": [300, 1000],
+      "marginal": [250, 600]
+    },
+    "notes": "Tomato requires warm climate, moderate rainfall, and well-drained soil"
+  },
+  "cabbage": {
+    "elevation": {
+      "ideal": [600, 1200],
+      "suitable": [400, 1500],
+      "marginal": [200, 1000]
+    },
+    "slope": {
+      "ideal": [0, 3],
+      "suitable": [0, 8],
+      "marginal": [8, 12]
+    },
+    "rainfall": {
+      "ideal": [400, 800],
+      "suitable": [300, 1000],
+      "marginal": [250, 600]
+    },
+    "notes": "Cabbage prefers cool climate and well-drained fertile soil"
+  },
+  "banana": {
+    "elevation": {
+      "ideal": [0, 600],
+      "suitable": [0, 800],
+      "marginal": [800, 1200]
+    },
+    "slope": {
+      "ideal": [0, 3],
+      "suitable": [0, 8],
+      "marginal": [8, 12]
+    },
+    "rainfall": {
+      "ideal": [1000, 1500],
+      "suitable": [800, 1800],
+      "marginal": [600, 1000]
+    },
+    "notes": "Banana requires warm humid climate, high rainfall, and well-drained soil"
+  },
+  "mango": {
+    "elevation": {
+      "ideal": [0, 600],
+      "suitable": [0, 800],
+      "marginal": [800, 1200]
+    },
+    "slope": {
+      "ideal": [0, 5],
+      "suitable": [0, 12],
+      "marginal": [12, 20]
+    },
+    "rainfall": {
+      "ideal": [600, 1200],
+      "suitable": [500, 1500],
+      "marginal": [400, 800]
+    },
+    "notes": "Mango requires warm climate, moderate rainfall, and well-drained soil"
+  },
+  "coconut": {
+    "elevation": {
+      "ideal": [0, 300],
+      "suitable": [0, 500],
+      "marginal": [500, 800]
+    },
+    "slope": {
+      "ideal": [0, 3],
+      "suitable": [0, 8],
+      "marginal": [8, 12]
+    },
+    "rainfall": {
+      "ideal": [1000, 1500],
+      "suitable": [800, 1800],
+      "marginal": [600, 1000]
+    },
+    "notes": "Coconut requires warm humid climate, high rainfall, and coastal sandy soil"
+  },
+  "tea": {
+    "elevation": {
+      "ideal": [800, 1800],
+      "suitable": [600, 2000],
+      "marginal": [400, 1200]
+    },
+    "slope": {
+      "ideal": [5, 25],
+      "suitable": [3, 35],
+      "marginal": [0, 15]
+    },
+    "rainfall": {
+      "ideal": [1200, 2000],
+      "suitable": [1000, 2500],
+      "marginal": [800, 1500]
+    },
+    "notes": "Tea requires cool climate, high rainfall, and well-drained sloped terrain"
+  },
+  "coffee": {
+    "elevation": {
+      "ideal": [600, 1200],
+      "suitable": [400, 1500],
+      "marginal": [200, 1000]
+    },
+    "slope": {
+      "ideal": [5, 20],
+      "suitable": [3, 30],
+      "marginal": [0, 15]
+    },
+    "rainfall": {
+      "ideal": [1000, 1500],
+      "suitable": [800, 1800],
+      "marginal": [600, 1200]
+    },
+    "notes": "Coffee requires moderate climate, high rainfall, and well-drained sloped terrain"
+  },
+  "rubber": {
+    "elevation": {
+      "ideal": [0, 400],
+      "suitable": [0, 600],
+      "marginal": [600, 1000]
+    },
+    "slope": {
+      "ideal": [0, 15],
+      "suitable": [0, 25],
+      "marginal": [25, 35]
+    },
+    "rainfall": {
+      "ideal": [1500, 2500],
+      "suitable": [1200, 3000],
+      "marginal": [1000, 1800]
+    },
+    "notes": "Rubber requires warm humid climate, very high rainfall, and well-drained soil"
+  }
+}

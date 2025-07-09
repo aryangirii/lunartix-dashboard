@@ -1,0 +1,40 @@
+# Enhanced Use Cases for GIS Query Analysis
+
+## Location Query Examples
+1. **Query:** Where are urban areas in Pune?
+   **Task:** location_query
+   **CoT:** Simple location request > User wants urban areas only > Return LULC filter for urban class > No additional parameters needed
+   **Keywords:** where, urban, areas, pune
+   **Parameters:** lulc
+
+2. **Query:** Find rivers in the region
+   **Task:** location_query
+   **CoT:** Water body location request > Specific to rivers > Return water bodies filter > Simple location query
+   **Keywords:** find, rivers, region
+   **Parameters:** water_bodies
+
+## Suitability Analysis Examples
+3. **Query:** Find areas suitable for wheat cultivation
+   **Task:** suitability_analysis
+   **CoT:** Crop suitability analysis > Wheat requirements > Need elevation, rainfall, slope > Include agriculture LULC
+   **Keywords:** suitable, wheat, cultivation
+   **Parameters:** elevation, rainfall, slope, lulc
+
+4. **Query:** Best location for solar plant
+   **Task:** suitability_analysis
+   **CoT:** Solar plant requirements > Flat terrain > Low rainfall > Open land > Multiple criteria needed
+   **Keywords:** best, location, solar, plant
+   **Parameters:** slope, rainfall, lulc
+
+## Risk Analysis Examples
+5. **Query:** Flood risk zones in western Pune
+   **Task:** risk_analysis
+   **CoT:** Flood risk assessment > Low elevation vulnerable > High rainfall trigger > Spatial context important
+   **Keywords:** flood, risk, zones, western, pune
+   **Parameters:** elevation, rainfall, lulc
+
+6. **Query:** Landslide prone areas
+   **Task:** risk_analysis
+   **CoT:** Landslide risk > Steep slopes critical > High rainfall trigger > Combined factors
+   **Keywords:** landslide, prone, areas
+   **Parameters:** slope, rainfall, elevation

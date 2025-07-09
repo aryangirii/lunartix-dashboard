@@ -1,0 +1,208 @@
+# Enhanced LLM Use Cases with Chain-of-Thought (CoT) Reasoning for Geospatial Tasks
+
+Below are enhanced use cases for a Chain-of-Thought-enabled LLM system applied to geospatial analysis. Each entry includes sample queries, task types, and detailed CoT reasoning paths.
+
+---
+
+## Location Query Use Cases
+
+1. **Query:** Where are urban areas in Pune?
+   * **Task:** Location Query
+   * **CoT:** Identify location request > User only wants urban areas > Return LULC filter for urban class only > No elevation/slope/rainfall needed for simple location query
+
+2. **Query:** Find rivers in the region
+   * **Task:** Location Query  
+   * **CoT:** Identify water body request > User wants rivers specifically > Return water bodies filter for rivers > May include proximity to settlements if context suggests
+
+3. **Query:** Locate forest areas
+   * **Task:** Location Query
+   * **CoT:** Simple location query > Return LULC filter for forest class > No additional parameters needed
+
+4. **Query:** Where are agricultural fields?
+   * **Task:** Location Query
+   * **CoT:** Agricultural area location > Return LULC filter for agriculture class > Simple location query requires only LULC filter
+
+5. **Query:** Show me water bodies near highways
+   * **Task:** Location Query + Proximity
+   * **CoT:** Water body location + proximity analysis > Return water bodies filter > Add infrastructure filter for highways > Include proximity buffer
+
+## Suitability Analysis Use Cases
+
+6. **Query:** Find areas suitable for wheat cultivation
+   * **Task:** Suitability Analysis
+   * **CoT:** Identify crop suitability task > Retrieve wheat requirements (elevation: 200-800m, rainfall: 600-1200mm, slope: 0-15°) > Filter by elevation, rainfall, slope > Include agriculture LULC class
+
+7. **Query:** Best location for solar plant in Pune
+   * **Task:** Suitability Analysis
+   * **CoT:** Solar plant requirements > Flat terrain (slope: 0-5°) > Low rainfall preferred > Open land (avoid urban/forest) > Include barren or grassland LULC
+
+8. **Query:** Suitable areas for organic farming
+   * **Task:** Suitability Analysis
+   * **CoT:** Organic farming needs > Moderate elevation (100-600m) > Good rainfall (800-1400mm) > Gentle slope (0-20°) > Agriculture LULC > Away from urban areas
+
+9. **Query:** Where to build warehouses near highways?
+   * **Task:** Suitability Analysis + Proximity
+   * **CoT:** Warehouse requirements > Flat terrain (slope: 0-10°) > Good drainage > Near highways > Include industrial/barren LULC > Add infrastructure proximity
+
+10. **Query:** Identify zones for mango farming
+    * **Task:** Suitability Analysis
+    * **CoT:** Mango cultivation needs > Elevation: 100-500m > Rainfall: 800-1200mm > Slope: 0-25° > Agriculture LULC preferred
+
+## Risk Analysis Use Cases
+
+11. **Query:** Where is flood risk highest during monsoon?
+    * **Task:** Risk Analysis
+    * **CoT:** Flood risk assessment > Low elevation areas vulnerable > High rainfall increases risk > Gentle slope causes water accumulation > Include all LULC to show impact
+
+12. **Query:** Find urban areas prone to landslides
+    * **Task:** Risk Analysis
+    * **CoT:** Landslide risk in urban areas > Steep slopes (>30°) > High rainfall triggers > Urban LULC specifically > Combine slope + rainfall + urban filters
+
+13. **Query:** Which villages are vulnerable to flooding?
+    * **Task:** Risk Analysis + Spatial Join
+    * **CoT:** Village flood vulnerability > Low elevation + high rainfall areas > Spatial join with village boundaries > Return affected villages
+
+14. **Query:** Drought-prone areas in eastern region
+    * **Task:** Risk Analysis
+    * **CoT:** Drought risk assessment > Low rainfall areas (<800mm) > Higher elevation may worsen > Include agriculture LULC to show impact on farming
+
+15. **Query:** Landslide-prone villages
+    * **Task:** Risk Analysis
+    * **CoT:** Landslide risk > Steep slopes (>25°) > High rainfall triggers > Overlay with village locations > Settlement vulnerability analysis
+
+## Proximity Analysis Use Cases
+
+16. **Query:** Agriculture land near rivers
+    * **Task:** Proximity Analysis
+    * **CoT:** Agricultural proximity to water > Agriculture LULC filter > Water bodies (rivers) filter > Calculate proximity buffer > Intersect layers
+
+17. **Query:** Villages farthest from roads
+    * **Task:** Accessibility Analysis
+    * **CoT:** Road accessibility > Calculate distance from villages to roads > Sort by distance > Return remote villages
+
+18. **Query:** Forest areas near water bodies
+    * **Task:** Proximity Analysis
+    * **CoT:** Forest-water proximity > Forest LULC filter > Water bodies filter > Apply proximity buffer > Show intersection
+
+19. **Query:** Urban areas close to airports
+    * **Task:** Proximity Analysis
+    * **CoT:** Urban-airport proximity > Urban LULC filter > Airport infrastructure filter > Calculate proximity zones
+
+20. **Query:** Find schools near flood zones
+    * **Task:** Risk + Proximity Analysis
+    * **CoT:** School safety analysis > Identify flood zones (low elevation + high rainfall) > Locate schools > Calculate proximity > Flag at-risk schools
+
+## Complex Multi-Criteria Use Cases
+
+21. **Query:** Safe zones for emergency shelters
+    * **Task:** Multi-Criteria Suitability
+    * **CoT:** Emergency shelter requirements > High elevation (flood-safe) > Away from steep slopes (landslide-safe) > Open areas (barren/grassland LULC) > Near roads for access
+
+22. **Query:** Optimal locations for wind farms
+    * **Task:** Multi-Criteria Suitability
+    * **CoT:** Wind farm requirements > High elevation (>400m) > Open areas (grassland/barren) > Away from urban areas > Moderate slope (5-20°) > Access to roads
+
+23. **Query:** Wetland conservation areas
+    * **Task:** Environmental Planning
+    * **CoT:** Wetland identification > Low elevation areas > High rainfall > Water/wetland LULC > Away from urban development
+
+24. **Query:** Sustainable tourism spots in forests
+    * **Task:** Multi-Criteria Planning
+    * **CoT:** Eco-tourism requirements > Forest LULC > Moderate elevation > Scenic areas > Road accessibility > Away from sensitive zones
+
+25. **Query:** Groundwater recharge zones
+    * **Task:** Hydrological Planning
+    * **CoT:** Recharge zone identification > Moderate elevation > Gentle slope (5-15°) > Good rainfall (>1000mm) > Forest/grassland LULC > Away from urban areas
+
+## Specific Feature Analysis
+
+26. **Query:** Steep slope areas with deforestation
+    * **Task:** Environmental Monitoring
+    * **CoT:** Environmental degradation > Steep slopes (>30°) > Previously forest areas > Compare historical LULC > Flag critical areas
+
+27. **Query:** High rainfall zones with gentle slopes
+    * **Task:** Terrain-Climate Analysis
+    * **CoT:** Climate-terrain combination > High rainfall (>1200mm) > Gentle slopes (0-15°) > Good for agriculture > Return suitable zones
+
+28. **Query:** Urban heat island zones
+    * **Task:** Climate Analysis
+    * **CoT:** Heat island identification > Urban LULC focus > High density areas > Temperature correlation > Return hotspots
+
+29. **Query:** River buffer zones for protection
+    * **Task:** Environmental Protection
+    * **CoT:** River protection > Identify rivers > Create buffer zones > Include forest/grassland LULC for protection > Exclude urban development
+
+30. **Query:** Erosion-prone agricultural areas
+    * **Task:** Environmental Risk
+    * **CoT:** Soil erosion risk > Agricultural LULC > Steep slopes (>20°) > High rainfall > Vulnerable farming areas
+
+## Infrastructure and Development
+
+31. **Query:** Highway construction suitable areas
+    * **Task:** Infrastructure Planning
+    * **CoT:** Highway route planning > Gentle slopes (0-15°) > Avoid forests and water bodies > Consider existing road network > Minimize environmental impact
+
+32. **Query:** Industrial zones away from residential areas
+    * **Task:** Land Use Planning
+    * **CoT:** Industrial development > Flat terrain > Away from urban residential > Near highways > Consider wind patterns > Suitable LULC classes
+
+33. **Query:** Suitable areas for dam construction
+    * **Task:** Water Resource Planning
+    * **CoT:** Dam site selection > River valleys > Suitable geology > Minimal population impact > Consider catchment area > Environmental assessment
+
+34. **Query:** Urban expansion suitable zones
+    * **Task:** Urban Planning
+    * **CoT:** Urban growth > Flat terrain > Away from flood zones > Good road access > Avoid prime agricultural land > Consider water supply
+
+35. **Query:** Renewable energy corridor planning
+    * **Task:** Energy Planning
+    * **CoT:** Energy infrastructure > Suitable terrain > Transmission line routes > Environmental constraints > Multi-criteria analysis
+
+## Advanced Analysis Cases
+
+36. **Query:** Climate change vulnerable areas
+    * **Task:** Climate Vulnerability
+    * **CoT:** Climate vulnerability > Multiple risk factors > Sea level rise > Temperature increase > Precipitation changes > Ecosystem impacts
+
+37. **Query:** Biodiversity hotspots for conservation
+    * **Task:** Conservation Planning
+    * **CoT:** Biodiversity assessment > Forest fragmentation > Habitat connectivity > Species distribution > Conservation priority areas
+
+38. **Query:** Water stress regions
+    * **Task:** Water Resource Assessment
+    * **CoT:** Water stress analysis > Rainfall patterns > Groundwater levels > Water demand > Agricultural intensity > Urban growth
+
+39. **Query:** Disaster evacuation route planning
+    * **Task:** Emergency Planning
+    * **CoT:** Evacuation planning > Road network analysis > Population density > Hazard zones > Safe destinations > Route optimization
+
+40. **Query:** Sustainable agriculture zones
+    * **Task:** Agricultural Planning
+    * **CoT:** Sustainable farming > Soil quality > Water availability > Climate suitability > Market access > Environmental protection
+
+## Summary Guidelines for CoT Implementation
+
+### For Location Queries:
+- Focus only on the requested feature type
+- Use appropriate LULC or infrastructure filters
+- Avoid unnecessary parameters like elevation/slope/rainfall
+
+### For Suitability Analysis:
+- Include relevant environmental parameters
+- Consider crop/activity-specific requirements
+- Apply multi-criteria filtering
+- Include proximity factors if needed
+
+### For Risk Analysis:
+- Focus on hazard-relevant parameters
+- Combine multiple risk factors
+- Consider vulnerable populations/areas
+- Include impact assessment
+
+### For Proximity Analysis:
+- Define appropriate buffer distances
+- Consider accessibility factors
+- Include relevant infrastructure
+- Account for barriers/constraints
+
+This enhanced CoT framework ensures that the LLM generates appropriate filters based on the specific query type and user intent, avoiding unnecessary complexity for simple location queries while providing comprehensive analysis for complex suitability and risk assessments.
