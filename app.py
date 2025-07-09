@@ -6,6 +6,9 @@ from rasterio.plot import show
 from streamlit_folium import st_folium
 import matplotlib.pyplot as plt
 
+# ✅ NEW: download large tif files from S3 if missing
+import download_big_files
+
 # Streamlit page config
 st.set_page_config(page_title="🗺 Geospatial Dashboard", layout="wide")
 st.title("🗺️ Geospatial Dashboard")
@@ -57,7 +60,7 @@ if show_highways:
 
 # ✅ Dynamic buffer: reproject, buffer, reproject back
 if show_buffer:
-    rivers_projected = rivers.to_crs(epsg=32643)
+    rivers_projected = rivers.to_crs(epsg=32643)  # UTM zone 43N (for Maharashtra)
     buffered = rivers_projected.buffer(buffer_distance)
     buffered_gdf = gpd.GeoDataFrame(geometry=buffered).set_crs(32643).to_crs(4326)
     folium.GeoJson(buffered_gdf, name=f"Buffer {buffer_distance}m", style_function=lambda x: {'color': 'purple', 'fillOpacity': 0.2}).add_to(m)
