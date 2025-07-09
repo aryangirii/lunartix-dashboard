@@ -2,14 +2,12 @@ import streamlit as st
 import geopandas as gpd
 import folium
 import rasterio
-from rasterio.plot import show
 from streamlit_folium import st_folium
 import matplotlib.pyplot as plt
 
-# ✅ NEW: download large tif files from S3 if missing
+# ✅ Download small rasters from S3 if missing
 import download_big_files
 
-# Streamlit page config
 st.set_page_config(page_title="🗺 Geospatial Dashboard", layout="wide")
 st.title("🗺️ Geospatial Dashboard")
 
@@ -21,7 +19,7 @@ soil = gpd.read_file("data/soil.geojson")
 villages = gpd.read_file("data/pune_villages.geojson")
 highways = gpd.read_file("data/highways.geojson")
 
-# Convert non-geometry columns in highways to string
+# Convert non-geometry columns in highways to string to avoid JSON serialization issues
 for col in highways.columns:
     if col != 'geometry':
         highways[col] = highways[col].astype(str)
@@ -58,12 +56,14 @@ if show_villages:
 if show_highways:
     folium.GeoJson(highways_clean, name="Highways", style_function=lambda x: {'color': 'red', 'weight': 1}).add_to(m)
 
-# ✅ Dynamic buffer: reproject, buffer, reproject back
+# ✅ Dynamic buffer (using a smaller sample to save memory)
 if show_buffer:
-    rivers_projected = rivers.to_crs(epsg=32643)  # UTM zone 43N (for Maharashtra)
+    rivers_small = rivers.sample(100)  # only 100 rivers to keep light
+    rivers_projected = rivers_small.to_crs(epsg=32643)  # UTM zone 43N
     buffered = rivers_projected.buffer(buffer_distance)
     buffered_gdf = gpd.GeoDataFrame(geometry=buffered).set_crs(32643).to_crs(4326)
-    folium.GeoJson(buffered_gdf, name=f"Buffer {buffer_distance}m", style_function=lambda x: {'color': 'purple', 'fillOpacity': 0.2}).add_to(m)
+    folium.GeoJson(buffered_gdf, name=f"Buffer {buffer_distance}m", 
+                   style_function=lambda x: {'color': 'purple', 'fillOpacity': 0.2}).add_to(m)
 
 folium.LayerControl().add_to(m)
 
@@ -83,19 +83,23 @@ cols = st.columns(2)
 with cols[0]:
     st.text("Elevation (rescaled_Elevation.tif)")
     with rasterio.open("data/rescaled_Elevation.tif") as src:
+        data = src.read(1, out_shape=(512, 512))  # read first band, smaller
         fig, ax = plt.subplots()
-        show(src, ax=ax, title='Elevation')
+        ax.imshow(data, cmap='terrain')
+        ax.set_title('Elevation')
         st.pyplot(fig)
 
 with cols[1]:
     st.text("Land Use Land Cover (resampled_lulc.tif)")
     with rasterio.open("data/resampled_lulc.tif") as src:
+        data = src.read(1, out_shape=(512, 512))
         fig, ax = plt.subplots()
-        show(src, ax=ax, title='LULC')
+        ax.imshow(data, cmap='viridis')
+        ax.set_title('LULC')
         st.pyplot(fig)
 
 # --------------------------
-# 📊 Show data tables
+# 📊 Data tables
 # --------------------------
 st.subheader("📊 Data Tables (first 5 rows)")
 st.write("**Villages:**")
